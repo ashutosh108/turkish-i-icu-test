@@ -8,7 +8,17 @@ all: main
 
 Sample usage:
 $ rm -f ./main && make && LC_ALL=tr_TR.UTF-8 ./main
+gives
+> running under "en_US_POSIX" locale
+> tolower("İ") == "i̇" (U+0069 U+0307)
+on my machine
 $ rm -f ./main && make && LC_ALL=C.UTF-8 ./main
+gives
+> running under "en_US_POSIX" locale
+> tolower("İ") == "i̇" (U+0069 U+0307)
+on my machine.
+
+Verified to work with ICU 53.1, 69.1 and 70.1.
 */
 
 #include <stdio.h>
