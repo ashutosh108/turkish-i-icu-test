@@ -1,10 +1,14 @@
 /*
 Sample Makefile:
 CFLAGS  = -ggdb -std=c99 -pedantic -Wall -Wextra -Werror \
-          `pkg-config --cflags icu-uc icu-io` -DU_DISABLE_RENAMING
+          `pkg-config --cflags icu-uc icu-io` #-DU_DISABLE_RENAMING
 LDLIBS = `pkg-config --libs icu-uc icu-io`
 
 all: main
+
+Sample usage:
+$ rm -f ./main && make && LC_ALL=tr_TR.UTF-8 ./main
+$ rm -f ./main && make && LC_ALL=C.UTF-8 ./main
 */
 
 #include <stdio.h>
@@ -73,7 +77,7 @@ int main() {
 	printf("running under \"%s\" locale\n", uloc_getDefault());
 	// demo("Qwe");
 	// demo("ЙцуЁёЕе");
-	demo("İ");
+	demo("İ"); // this is U+0130, capital "I" with dot
 	// demo("i");
 	// demo("i̇");
 }
